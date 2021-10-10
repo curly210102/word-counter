@@ -2,10 +2,7 @@
   "name": "@homegrown/word-counter",
   "version": "0.1.1",
   "description": "word counter which support CJK and emoji",
-  "files": [
-    "./dist/index.*"
-  ],
-  "main": "./dist/index.js",
+  "main": "dist/index.js",
   "scripts": {
     "dev": "tsc -w",
     "build": "tsc",
