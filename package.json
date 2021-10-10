@@ -1,0 +1,33 @@
+{
+  "name": "@homegrown/word-counter",
+  "version": "0.1.0",
+  "description": "word counter which support CJK and emoji",
+  "main": "index.js",
+  "scripts": {
+    "dev": "tsc -w",
+    "build": "tsc",
+    "test": "mocha --reporter spec"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/curly210102/word-counter.git"
+  },
+  "keywords": [
+    "word",
+    "count"
+  ],
+  "author": "Curly Brackets",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/curly210102/word-counter/issues"
+  },
+  "homepage": "https://github.com/curly210102/word-counter#readme",
+  "devDependencies": {
+    "chai": "^4.3.4",
+    "mocha": "^9.1.2",
+    "typescript": "^4.4.3"
+  },
+  "dependencies": {
+    "emoji-regex": "^9.2.2"
+  }
+}
