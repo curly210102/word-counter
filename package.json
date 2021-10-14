@@ -1,13 +1,13 @@
 {
   "name": "@homegrown/word-counter",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "word counter which support CJK and emoji",
   "main": "dist/index.js",
   "files": [
     "dist/index.*"
   ],
   "scripts": {
-    "dev": "tsc -w",
+    "dev": "tsc -w --inlineSourceMap",
     "build": "tsc",
     "test": "mocha --reporter spec"
   },

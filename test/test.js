@@ -18,40 +18,52 @@ describe("word count test", () => {
   });
 
   it("should count english word", () => {
-    expect(countWords("We look forward to welcoming you to our stores. ")).to.equal(9);
+    expect(
+      countWords("We look forward to welcoming you to our stores. ")
+    ).to.equal(9);
     expect(countWords("const name2Value = {}")).to.equal(2);
     expect(countWords("1")).to.equal(1);
+  });
+
+  it("should count number", () => {
+    expect(countWords("10.11")).to.equal(1);
   });
 });
 
 describe("line count test", () => {
   const countLines = wordCounter.countLines;
-    it("should count multiple lines", () => {
-        expect(countLines("# Heading \nHello, world.")).to.equal(2);
-    })
+  it("should count multiple lines", () => {
+    expect(countLines("# Heading \nHello, world.")).to.equal(2);
+  });
 
-    it("should count with no content lines", () => {
-        expect(countLines("# Heading \n\n\nHello, world.")).to.equal(4);
-    })
+  it("should count with no content lines", () => {
+    expect(countLines("# Heading \n\n\nHello, world.")).to.equal(4);
+  });
 });
 
 describe("characters count test", () => {
   const countCharacters = wordCounter.countCharacters;
-    it("when count without spaces", () => {
-        expect(countCharacters("📕 Same: “一𠍵”")).to.equal(10);
-    })
-    it("when count with spaces", () => {
-        expect(countCharacters("📕 Same: “一𠍵”", true)).to.equal(12);
-    })
+  it("when count without spaces", () => {
+    expect(countCharacters("📕 Same: “一𠍵”")).to.equal(10);
+    expect(
+      countCharacters("# 🙂 Hello, World.\n探索充满创新的世界。")
+    ).to.equal(24);
+  });
+  it("when count with spaces", () => {
+    expect(countCharacters("📕 Same: “一𠍵”", true)).to.equal(12);
+    expect(
+      countCharacters("# 🙂 Hello, World.\n\n探索充满创新的世界。", true)
+    ).to.equal(27);
+  });
 });
 
 describe("count test", () => {
   const count = wordCounter.count;
   it("count with paragraph", () => {
-      const countResult = count("# 🍎 Apple\n\n探索 Apple 充满创新的世界。");
-      expect(countResult.words).to.equal(12);
-      expect(countResult.lines).to.equal(3);
-      expect(countResult.characters).to.equal(22);
-      expect(countResult.charactersWithSpaces).to.equal(26);
-  })
-})
+    const countResult = count("# 🍎 Apple\n\n探索 Apple 充满创新的世界。");
+    expect(countResult.words).to.equal(12);
+    expect(countResult.lines).to.equal(3);
+    expect(countResult.characters).to.equal(22);
+    expect(countResult.charactersWithSpaces).to.equal(26);
+  });
+});

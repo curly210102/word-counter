@@ -1,5 +1,10 @@
 import emojiRegexp from "emoji-regex/es2015/RGI_Emoji";
 
+const PatternString = {
+  emoji: emojiRegexp().source,
+  cjk: "\\p{Script=Han}|\\p{Script=Kana}|\\p{Script=Hira}|\\p{Script=Hangul}",
+  word: "[\\p{L}|\\p{N}|._]+",
+};
 export interface IWordCountResult {
   words: number;
   lines: number;
@@ -7,25 +12,14 @@ export interface IWordCountResult {
   charactersWithSpaces: number;
 }
 
-const PatternString = {
-  cjk: "\\p{Script=Han}|\\p{Script=Kana}|\\p{Script=Hira}|\\p{Script=Hangul}",
-  latin: "\\d+\\.\\d+|\\w+",
-  emoji: emojiRegexp().source,
-};
-
 const wordPattern = new RegExp(
-  `${PatternString.emoji}|${PatternString.cjk}|${PatternString.latin}`,
+  `${PatternString.emoji}|${PatternString.cjk}|${PatternString.word}`,
   "gu"
 );
 
-const characterPattern = new RegExp(
-  `${PatternString.emoji}|${PatternString.cjk}|[^\\s\\n\\r\\t\\v\\f\\b]`,
-  "gu"
-);
-const characterPatternWithSpace = new RegExp(
-  `${PatternString.emoji}|${PatternString.cjk}|[^\\n\\r\\t\\v\\f\\b]`,
-  "gu"
-);
+const characterPattern = new RegExp(`${PatternString.emoji}|\\S`, "ug");
+
+const characterPatternWithSpace = new RegExp(`${PatternString.emoji}|.`, "ug");
 
 export const countWords = (text: string) => {
   return text.match(wordPattern)?.length ?? 0;
@@ -34,13 +28,14 @@ export const countWords = (text: string) => {
 export const countLines = (text: string) => {
   return text.split("\n").length;
 };
+
 export const countCharacters = (text: string, withSpace: boolean = false) => {
   return (
-    text.match(
-      withSpace ? characterPatternWithSpace : characterPattern
-    )?.length ?? 0
+    text.match(withSpace ? characterPatternWithSpace : characterPattern)
+      ?.length ?? 0
   );
 };
+
 export const count = (text: string): IWordCountResult => {
   return {
     words: countWords(text),
