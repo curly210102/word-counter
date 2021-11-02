@@ -12,6 +12,7 @@ describe("word count test", () => {
   });
 
   it("should count emoji", () => {
+    expect(countWords("👋🏃‍♀️👨‍👩‍👧‍👦👨‍💻👋🏻🇨🇳🏴󠁧󠁢󠁥󠁮󠁧󠁿#️⃣")).to.equal(8);
     expect(countWords("🙏❎✅🤓🧐❗️")).to.equal(6);
     expect(countWords("👫👨‍👩‍👧‍👦")).to.equal(2);
     expect(countWords("🤴🏾")).to.equal(1);
@@ -22,11 +23,14 @@ describe("word count test", () => {
       countWords("We look forward to welcoming you to our stores. ")
     ).to.equal(9);
     expect(countWords("const name2Value = {}")).to.equal(2);
-    expect(countWords("1")).to.equal(1);
+    expect(countWords("a_b")).to.equal(1);
+    expect(countWords("a1.2b")).to.equal(2);
   });
 
   it("should count number", () => {
     expect(countWords("10.11")).to.equal(1);
+    expect(countWords("1000")).to.equal(1);
+    expect(countWords(".112")).to.equal(1);
   });
 });
 
