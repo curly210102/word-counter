@@ -1,6 +1,6 @@
 {
   "name": "@homegrown/word-counter",
-  "version": "0.1.6",
+  "version": "0.1.7",
   "description": "word counter which support CJK and emoji",
   "main": "dist/index.js",
   "files": [
@@ -31,5 +31,8 @@
     "emoji-test-regex-pattern": "^1.6.0",
     "mocha": "^9.1.2",
     "typescript": "^4.4.3"
+  },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/"
   }
 }

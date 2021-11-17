@@ -20,6 +20,10 @@ wordCounter.count(text); // count all above items: {words: 12, lines: 2, charact
 
 ## Changelog
 
+### 0.1.7
+
+- Fix include letter but except cjk letter, e.g. "Innodb的二级索引存储的值"
+
 ### 0.1.6
 
 - Update emoji regexp
