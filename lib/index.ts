@@ -1,9 +1,11 @@
 import emojiPattern from "./emojiPattern";
 
+const cjkPattern =
+  "\\p{Script=Han}|\\p{Script=Kana}|\\p{Script=Hira}|\\p{Script=Hangul}";
 const PatternString = {
   emoji: emojiPattern,
-  cjk: "\\p{Script=Han}|\\p{Script=Kana}|\\p{Script=Hira}|\\p{Script=Hangul}",
-  word: "[\\p{Alphabetic}\\p{Decimal_Number}\\p{Connector_Punctuation}\\p{Join_Control}]+",
+  cjk: cjkPattern,
+  word: `((?!${cjkPattern})[\\p{Alphabetic}\\p{Decimal_Number}\\p{Connector_Punctuation}\\p{Join_Control}])+`,
   number: "(?:[\\p{Decimal_Number}](?:\\.?\\p{Decimal_Number})+)",
 };
 export interface IWordCountResult {

@@ -70,4 +70,11 @@ describe("count test", () => {
     expect(countResult.characters).to.equal(22);
     expect(countResult.charactersWithSpaces).to.equal(26);
   });
+
+  it("count with combine", () => {
+    let countResult = count("Innodb的二级索引存储的值");
+    expect(countResult.words).to.equal(10);
+    countResult = count("Innodb🍎");
+    expect(countResult.words).to.equal(2);
+  });
 });
